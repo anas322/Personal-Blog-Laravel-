@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "hey";
+Route::redirect('/','/posts');
+
+Route::get('/posts',function(){
+    return view('posts.index');
 });
 
 Auth::routes();
