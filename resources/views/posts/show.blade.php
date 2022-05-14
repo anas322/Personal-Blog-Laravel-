@@ -24,7 +24,7 @@
 
             <div class="article-img mb-3">
                 <a href="#">
-                    <img src=" {{ asset('images/image.jpg') }}  " alt="" width="100%" height="auto">
+                    <img src=" {{ asset('images/image.jpg') }}  " alt="" width="100%" height="500px" style="object-fit:cover">
                 </a>
             </div>
 
