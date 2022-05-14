@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\PostController ;
+use App\Http\Controllers\Admin\PostController as AdminPostController ;
+use App\Http\Controllers\Admin\CategoryController  ;
+use App\Http\Controllers\Admin\TagController  ;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +22,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/','/posts');
 
-Route::get('/posts',function(){
-    return view('posts.index');
+Route::get('/posts',[PostController::class,'index'])->name('posts');
+Route::get('/posts/{post}',[PostController::class,'show'])->name('posts.show');
+
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function(){
+
+    Route::resource('/posts',AdminPostController::class);
+    Route::resource('/categories',CategoryController::class);
+    Route::resource('/tags',TagController::class);
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes(['register' => false]);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
