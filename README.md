@@ -9,7 +9,13 @@ the project consist of two main parts Admin Part and viewer Part
 ## Start Project
 
 To start this project run
+create mysql database called `bloggit`
+run 
 
+```bash
+  php artisan migrate
+```
+start the server
 ```bash
   php artisan serve
 ```
